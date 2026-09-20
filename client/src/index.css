@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply antialiased bg-[#f8fafc] text-slate-900 transition-colors duration-300 min-h-screen selection:bg-indigo-500 selection:text-white;
+  }
+
+  .dark body {
+    @apply bg-[#07090e] text-slate-100;
+  }
+}
+
+/* Dynamic background grid effect */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(129, 140, 248, 0.6);
+}
+
+/* Ultra Glassmorphic Panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass-panel {
+  background: rgba(13, 17, 28, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Premium Interactive Animation Card */
+.task-card-animated {
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-card-animated:hover {
+  transform: translateY(-4px) scale(1.012);
+}
+
+/* Card shimmer light reflection on hover */
+.task-card-animated::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.2) 48%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.2) 52%,
+    transparent 65%
+  );
+  transform: translateX(-100%) rotate(25deg);
+  pointer-events: none;
+  transition: transform 0.8s ease-in-out;
+}
+
+.dark .task-card-animated::after {
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.05) 48%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.05) 52%,
+    transparent 65%
+  );
+}
+
+.task-card-animated:hover::after {
+  transform: translateX(100%) rotate(25deg);
+}
+
+/* Kanban column active drag-over state */
+.kanban-col-drag-over {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.6) !important;
+  box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.25) !important;
+}
+
+/* Smooth entry animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* React Bits Pro Hero 9: Blur Text Reveal Keyframe */
+@keyframes blurWordReveal {
+  0% {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(12px) scale(0.94);
+  }
+  60% {
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-blur-word {
+  opacity: 0;
+  animation-name: blurWordReveal;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+  will-change: filter, opacity, transform;
+}
+
+/* ── Floating ambient orb animations (Hero 9 / Dashboard) ── */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-24px) scale(1.04); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-16px) scale(1.03); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 9s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 7s ease-in-out 2s infinite;
+}
+
+/* Glow shadow on primary CTA hover */
+.hover\:shadow-glow:hover {
+  box-shadow: 0 0 32px -4px rgba(99, 102, 241, 0.55), 0 8px 24px -4px rgba(99, 102, 241, 0.3);
+}
