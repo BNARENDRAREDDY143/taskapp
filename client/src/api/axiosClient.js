@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Automatically detect backend URL with production fallback to your Render server
+const DEFAULT_URL = import.meta.env.DEV
+  ? 'http://localhost:5000/api'
+  : 'https://taskapp-2-m430.onrender.com/api';
+
+const RAW_URL = import.meta.env.VITE_API_URL || DEFAULT_URL;
+const API_URL = RAW_URL.endsWith('/api') ? RAW_URL : `${RAW_URL.replace(/\/+$/, '')}/api`;
 
 const axiosClient = axios.create({
   baseURL: API_URL,
