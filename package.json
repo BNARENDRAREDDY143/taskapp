@@ -4,9 +4,9 @@
   "private": true,
   "description": "Full Stack Task Management App",
   "scripts": {
-    "build": "cd client && npm install && npm run build && cd ../server && npm install",
+    "build": "cd client && npm install --include=dev && npm run build && cd ../server && npm install",
     "start": "cd server && node server.js",
-    "install-deps": "npm install --prefix client && npm install --prefix server",
+    "install-deps": "npm install --prefix client --include=dev && npm install --prefix server",
     "server": "cd server && npm start",
     "client": "cd client && npm run dev"
   },
