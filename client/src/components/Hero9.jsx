@@ -59,7 +59,7 @@ const slides = [
     subtitle: 'Switch between Kanban and List views with multi-category filters and keyword search in milliseconds.',
     tagline: '03 / 03',
     ctaPrimary: 'Filter & Search',
-    ctaRoute: '/dashboard',
+    ctaRoute: '/tasks',
     ctaSecondary: 'Create New Task',
     previewType: 'filter',
   },
@@ -283,9 +283,11 @@ const Hero9 = ({ user, stats, memberSince, lastLoginFormatted, onOpenCreateModal
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => navigate(slide.ctaRoute)}
-                className="px-8 py-4 rounded-2xl bg-white text-indigo-950 font-black text-sm shadow-2xl hover:bg-indigo-50 active:scale-95 transition-all flex items-center gap-2.5 group hover:shadow-indigo-500/20"
+                className="px-8 py-4 rounded-2xl bg-white text-indigo-950 font-black text-sm shadow-2xl hover:bg-indigo-50 active:scale-95 transition-all flex items-center gap-2.5 group hover:shadow-indigo-500/20 cursor-pointer"
               >
-                <Kanban className="w-5 h-5 text-indigo-600" />
+                {slide.previewType === 'kanban' && <Kanban className="w-5 h-5 text-indigo-600" />}
+                {slide.previewType === 'stats' && <TrendingUp className="w-5 h-5 text-indigo-600" />}
+                {slide.previewType === 'filter' && <Filter className="w-5 h-5 text-indigo-600" />}
                 <span>{slide.ctaPrimary}</span>
                 <ArrowRight className="w-5 h-5 text-indigo-600 group-hover:translate-x-1 transition-transform" />
               </button>

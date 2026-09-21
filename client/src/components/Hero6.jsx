@@ -27,6 +27,7 @@ const slides = [
     accentColor: 'from-indigo-600 via-purple-600 to-sky-500',
     borderColor: 'border-indigo-500/30',
     ctaPrimary: 'Open Task Board',
+    ctaRoute: '/tasks',
     ctaSecondary: 'Create New Task',
     actionType: 'board',
     previewType: 'kanban'
@@ -40,6 +41,7 @@ const slides = [
     accentColor: 'from-sky-500 via-indigo-600 to-emerald-500',
     borderColor: 'border-sky-500/30',
     ctaPrimary: 'View Task Stats',
+    ctaRoute: '/dashboard',
     ctaSecondary: 'Explore Board',
     actionType: 'stats',
     previewType: 'stats'
@@ -53,6 +55,7 @@ const slides = [
     accentColor: 'from-emerald-500 via-teal-600 to-indigo-600',
     borderColor: 'border-emerald-500/30',
     ctaPrimary: 'Filter & Search Tasks',
+    ctaRoute: '/tasks',
     ctaSecondary: 'Create Task',
     actionType: 'filter',
     previewType: 'filter'
@@ -209,10 +212,12 @@ const Hero6 = ({
           {/* Action CTAs */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
             <button
-              onClick={() => navigate('/tasks')}
-              className="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm shadow-lg shadow-indigo-600/30 active:scale-95 transition-all flex items-center gap-2.5 group"
+              onClick={() => navigate(slide.ctaRoute || '/tasks')}
+              className="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm shadow-lg shadow-indigo-600/30 active:scale-95 transition-all flex items-center gap-2.5 group cursor-pointer"
             >
-              <Kanban className="w-5 h-5" />
+              {slide.previewType === 'kanban' && <Kanban className="w-5 h-5" />}
+              {slide.previewType === 'stats' && <TrendingUp className="w-5 h-5" />}
+              {slide.previewType === 'filter' && <Filter className="w-5 h-5" />}
               <span>{slide.ctaPrimary}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
