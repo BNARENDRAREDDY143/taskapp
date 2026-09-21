@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
 import TasksPage from './pages/TasksPage';
 import { CheckSquare } from 'lucide-react';
 
@@ -89,11 +90,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            {/* Authenticated Dashboard / Analytics Page */}
             <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
-                  <HomePage />
+                  <Dashboard />
                 </ProtectedRoute>
               }
             />

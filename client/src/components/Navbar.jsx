@@ -9,7 +9,8 @@ import {
   LogOut,
   Sparkles,
   Home,
-  Kanban
+  Kanban,
+  LayoutDashboard
 } from 'lucide-react';
 
 const Navbar = ({ onOpenCreateModal }) => {
@@ -25,6 +26,7 @@ const Navbar = ({ onOpenCreateModal }) => {
 
   const isHome = location.pathname === '/home';
   const isTasks = location.pathname === '/tasks';
+  const isDashboard = location.pathname === '/dashboard';
 
   return (
     <header className="sticky top-0 z-30 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl transition-colors">
@@ -71,6 +73,18 @@ const Navbar = ({ onOpenCreateModal }) => {
             >
               <Kanban className="w-3.5 h-3.5" />
               <span>Tasks</span>
+            </Link>
+
+            <Link
+              to="/dashboard"
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                isDashboard
+                  ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>Dashboard</span>
             </Link>
           </nav>
         </div>
